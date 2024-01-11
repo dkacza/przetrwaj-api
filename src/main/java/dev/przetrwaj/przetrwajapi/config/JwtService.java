@@ -1,7 +1,6 @@
 package dev.przetrwaj.przetrwajapi.config;
 
-import dev.przetrwaj.przetrwajapi.exception.TokenExpiredException;
-import dev.przetrwaj.przetrwajapi.exception.UsernameNotProvidedException;
+import dev.przetrwaj.przetrwajapi.exception.JwtAuthenticationException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -51,13 +50,13 @@ public class JwtService {
     private boolean checkTokenExpired(String token) {
         return extractClaim(token, Claims::getExpiration).before(new Date());
     }
-    public boolean checkTokenValid(String token, UserDetails userDetails) throws TokenExpiredException, UsernameNotProvidedException {
+    public boolean checkTokenValid(String token, UserDetails userDetails) throws JwtAuthenticationException {
         String username = extractUsername(token);
         if (checkTokenExpired(token)) {
-            throw new TokenExpiredException();
+            throw new JwtAuthenticationException("Token is expired");
         }
         if (username == null) {
-            throw new UsernameNotProvidedException();
+            throw new JwtAuthenticationException("Username not provided");
         }
         return username.equals(userDetails.getUsername());
     }
