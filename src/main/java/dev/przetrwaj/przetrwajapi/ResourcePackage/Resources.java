@@ -17,7 +17,7 @@ public class Resources{
     private ResourceTypes resourceType;
 
     @ManyToOne
-    @JoinColumn(name="resourceTypeId", nullable=false)
+    @JoinColumn(name="resourcePointId", nullable=false)
     private ResourcePoints resourcePoint;
 
     public Long getResourceId() {

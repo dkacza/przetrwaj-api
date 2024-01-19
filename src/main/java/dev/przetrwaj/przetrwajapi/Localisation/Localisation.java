@@ -1,9 +1,8 @@
 package dev.przetrwaj.przetrwajapi.Localisation;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import dev.przetrwaj.przetrwajapi.ResourcePackage.ResourcePoints;
+import dev.przetrwaj.przetrwajapi.report.Report;
+import jakarta.persistence.*;
 
 @Entity(name = "Localisation")
 public class Localisation
@@ -11,6 +10,16 @@ public class Localisation
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @OneToOne
+    @JoinColumn(
+            unique = true
+    )
+    private Report report;
+    @OneToOne
+    @JoinColumn(
+            unique = true
+    )
+    private ResourcePoints resourcePoints;
     private String adress;
     private Double longitude; //Długość geograficzna
     private Double latitude; //Szerokośc geograficzna

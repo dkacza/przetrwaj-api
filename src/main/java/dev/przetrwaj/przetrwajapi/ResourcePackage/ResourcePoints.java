@@ -1,5 +1,6 @@
 package dev.przetrwaj.przetrwajapi.ResourcePackage;
 
+import dev.przetrwaj.przetrwajapi.Localisation.Localisation;
 import jakarta.persistence.*;
 
 
@@ -16,6 +17,11 @@ public class ResourcePoints {
 
     @OneToMany(mappedBy="resourcePoint")
     private Set<Resources> resources;
+    @OneToOne
+    @JoinColumn(
+            unique = true
+    )
+    private Localisation location;
 
     public Long getResourcePointId() {
         return resourcePointId;
@@ -48,13 +54,8 @@ public class ResourcePoints {
         this.resourcePointName = resourcePointName;
         this.resources = resources;
     }
-/*
-    @OneToOne
-    @JoinColumn(
-            unique = true
-    )
-    private Localisation location;
 
+    /*
     ADD CONSTRUCTOR, GETTER, SETTER!!!
     */
 }

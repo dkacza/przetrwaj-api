@@ -1,6 +1,9 @@
 package dev.przetrwaj.przetrwajapi.ResourcePackage;
 
+import dev.przetrwaj.przetrwajapi.report.ReportType;
 import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity(name = "ResourceTypes")
 public class ResourceTypes{
@@ -14,11 +17,14 @@ public class ResourceTypes{
 
     @Enumerated(EnumType.STRING)
     private Units unit;
-
-    /*
+    @OneToOne
+    @JoinColumn(
+            unique = true
+    )
+    private Resources resources;
     @ManyToMany
     private Set<ReportType> reportTypes;
-
+    /*
     ADD CONSTRUCTOR, GETTER, SETTER!!!
     */
     public Long getResourceTypeId() {

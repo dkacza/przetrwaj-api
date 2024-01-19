@@ -1,5 +1,6 @@
 package dev.przetrwaj.przetrwajapi.report;
 
+import dev.przetrwaj.przetrwajapi.Localisation.Localisation;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -15,8 +16,11 @@ public class Report {
     private Date date;
     private int rejections;
     private int confirmations;
-
-    //private Localisation localisation;
+    @OneToOne
+    @JoinColumn(
+            unique = true
+    )
+    private Localisation localisation;
     @ManyToOne
     @JoinColumn(
             name = "ReportTypeId", nullable = false)
