@@ -13,14 +13,14 @@ public class ReportType {
     @Id
     private Long id;
 
-    public String getType_name() {
-        return type_name;
+    public String getTypeName() {
+        return typeName;
     }
 
     @OneToMany(mappedBy="id")
     private Set<Report> report;
-    private String type_name;
-    private String type_description;
+    private String typeName;
+    private String typeDescription;
     public ReportType() {}
     @ManyToMany
     @JoinTable(name = "ResourceTypes")
@@ -33,15 +33,15 @@ public class ReportType {
     public Long getId() {
         return id;
     }
-    public void setType_name(String type_name) {
-        this.type_name = type_name;
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 
-    public String getType_description() {
-        return type_description;
+    public String getTypeDescription() {
+        return typeDescription;
     }
 
-    public void setType_description(String type_description) {
-        this.type_description = type_description;
+    public void setTypeDescription(String typeDescription) {
+        this.typeDescription = typeDescription;
     }
 }

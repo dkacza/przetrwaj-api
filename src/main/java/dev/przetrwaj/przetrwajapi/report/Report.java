@@ -4,8 +4,6 @@ import dev.przetrwaj.przetrwajapi.Localisation.Localisation;
 import jakarta.persistence.*;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity(name = "Report")
 public class Report {
@@ -24,13 +22,13 @@ public class Report {
     @ManyToOne
     @JoinColumn(
             name = "ReportTypeId", nullable = false)
-    private ReportType report_type;
+    private ReportType reportType;
 
-    private int threat_degree;
+    private int threatDegree;
 
-    private String name_description;
+    private String nameDescription;
 
-    private String report_description;
+    private String reportDescription;
 
     public Report() {
     }
@@ -60,34 +58,34 @@ public class Report {
     }
 
     public ReportType getReportType() {
-        return report_type;
+        return reportType;
     }
 
-    public void setReportType(ReportType report_type) {
-        this.report_type = report_type;
+    public void setReportType(ReportType reportType) {
+        this.reportType = reportType;
     }
 
     public int getThreatDegree() {
-        return threat_degree;
+        return threatDegree;
     }
 
-    public void setThreatDegree(int threat_degree) {
-        this.threat_degree = threat_degree;
+    public void setThreatDegree(int threatDegree) {
+        this.threatDegree = threatDegree;
     }
     public String getNameDescription() {
-        return name_description;
+        return nameDescription;
     }
 
-    public void setNameDescription(String name_description) {
-        this.name_description = name_description;
+    public void setNameDescription(String nameDescription) {
+        this.nameDescription = nameDescription;
     }
 
     public String getReportDescription() {
-        return report_description;
+        return reportDescription;
     }
 
-    public void setReportDescription(String report_description) {
-        this.report_description = report_description;
+    public void setReportDescription(String reportDescription) {
+        this.reportDescription = reportDescription;
     }
 
 
