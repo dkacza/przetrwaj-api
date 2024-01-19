@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity(name = "users")
+@Entity(name = "Localisation")
 public class Localisation
 {
     @Id
@@ -19,6 +19,7 @@ public class Localisation
         this.longitude = longitude;
         this.latitude = latitude;
     }
+    public Localisation(){}
     public Long getId() {
         return id;
     }
