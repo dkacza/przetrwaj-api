@@ -14,6 +14,11 @@ public class Localisation
     private String adress;
     private Double longitude; //Długość geograficzna
     private Double latitude; //Szerokośc geograficzna
+    public Localisation(String adress, Double longitude, Double latitude){
+        this.adress = adress;
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
     public Long getId() {
         return id;
     }
