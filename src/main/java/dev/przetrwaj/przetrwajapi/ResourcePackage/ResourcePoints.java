@@ -4,6 +4,7 @@ import dev.przetrwaj.przetrwajapi.Localisation.Localisation;
 import jakarta.persistence.*;
 
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity(name = "ResourcePoints")
@@ -58,6 +59,19 @@ public class ResourcePoints {
     /*
     ADD CONSTRUCTOR, GETTER, SETTER!!!
     */
+
+    public ResourcePoints(String resourcePointName, Set<Resources> resources, Localisation location) {
+        this.resourcePointName = resourcePointName;
+        this.resources = resources;
+        this.location = location;
+    }
+
+    public ResourcePoints(String resourcePointName, Localisation location) {
+
+        this.resources = new HashSet<Resources>();
+        this.resourcePointName = resourcePointName;
+        this.location = location;
+    }
 }
 
 

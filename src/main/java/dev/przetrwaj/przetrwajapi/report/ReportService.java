@@ -11,6 +11,7 @@ import java.util.List;
 public class ReportService {
     private final ReportRepository reportRepository;
 
+
     public ReportService(ReportRepository reportRepository) {
         this.reportRepository = reportRepository;
     }

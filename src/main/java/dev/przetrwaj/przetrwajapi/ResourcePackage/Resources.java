@@ -47,9 +47,10 @@ public class Resources{
     public Resources(){
 
     }
-    public Resources(Long resourceId, Double quantity, ResourceTypes resourceType) {
-        this.resourceId = resourceId;
+    public Resources(Double quantity, ResourceTypes resourceType, ResourcePoints resourcePoint) {
+
         this.quantity = quantity;
         this.resourceType = resourceType;
+        this.resourcePoint = resourcePoint;
     }
 }
