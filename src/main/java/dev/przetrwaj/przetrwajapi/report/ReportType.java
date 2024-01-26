@@ -13,6 +13,11 @@ public class ReportType {
     @Id
     private Long id;
 
+    public ReportType(String typeName, String typeDescription) {
+        this.typeName = typeName;
+        this.typeDescription = typeDescription;
+    }
+
     public String getTypeName() {
         return typeName;
     }
