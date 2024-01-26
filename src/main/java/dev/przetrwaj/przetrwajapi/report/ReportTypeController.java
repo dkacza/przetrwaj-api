@@ -1,9 +1,25 @@
 package dev.przetrwaj.przetrwajapi.report;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import dev.przetrwaj.przetrwajapi.Localisation.Localisation;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/reportType")
 public class ReportTypeController {
+    private final ReportTypeService reportTypeService;
+
+    public ReportTypeController(ReportTypeService reportTypeService) {
+        this.reportTypeService = reportTypeService;
+    }
+    @GetMapping
+    public List<ReportType> getAllReportTypes(){
+        return reportTypeService.getAllReportTypes();
+    }
+    @PostMapping
+    public ReportType addReportType(@RequestBody String typeName, @RequestBody String typeDescription){
+        return reportTypeService.addNewReportType(typeName, typeDescription);
+    }
 }
