@@ -1,9 +1,9 @@
 package dev.przetrwaj.przetrwajapi.report;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import dev.przetrwaj.przetrwajapi.Localisation.Localisation;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -17,5 +17,11 @@ public class ReportController {
     @GetMapping
     public List<Report> getAllReports(){
         return reportService.getAllReports();
+    }
+    @PostMapping
+    public Report addReport(@RequestBody Date date, @RequestBody Localisation localisation,
+                          @RequestBody ReportType reportType, @RequestBody Integer threatDegree,
+                          @RequestBody String nameDescription, @RequestBody String reportDescription){
+        return reportService.addNewReport(date, localisation, reportType, threatDegree, nameDescription, reportDescription);
     }
 }

@@ -33,6 +33,31 @@ public class Report {
     public Report() {
     }
 
+    public Report(Date date, int rejections, int confirmations, Localisation localisation,
+                  ReportType reportType, int threatDegree, String nameDescription, String reportDescription) {
+        this.date = date;
+        this.rejections = rejections;
+        this.confirmations = confirmations;
+        this.localisation = localisation;
+        this.reportType = reportType;
+        this.threatDegree = threatDegree;
+        this.nameDescription = nameDescription;
+        this.reportDescription = reportDescription;
+    }
+
+    public Report(Date date, Localisation localisation, ReportType reportType,
+                  int threatDegree, String nameDescription, String reportDescription) {
+        this.date = date;
+        this.localisation = localisation;
+        this.reportType = reportType;
+        this.threatDegree = threatDegree;
+        this.nameDescription = nameDescription;
+        this.reportDescription = reportDescription;
+
+        this.rejections     = 0;
+        this.confirmations  = 0;
+    }
+
     public java.util.Date getDate() {
         return date;
     }
