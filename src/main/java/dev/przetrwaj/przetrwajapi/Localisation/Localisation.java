@@ -4,7 +4,7 @@ import dev.przetrwaj.przetrwajapi.ResourcePackage.ResourcePoints;
 import dev.przetrwaj.przetrwajapi.report.Report;
 import jakarta.persistence.*;
 
-@Entity(name = "Localisation")
+@Entity(name = "localisation")
 public class Localisation
 {
     @Id
