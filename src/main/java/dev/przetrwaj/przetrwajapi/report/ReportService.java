@@ -1,8 +1,8 @@
 package dev.przetrwaj.przetrwajapi.report;
 
-import dev.przetrwaj.przetrwajapi.Localisation.Localisation;
+import dev.przetrwaj.przetrwajapi.location.Location;
+import dev.przetrwaj.przetrwajapi.report.type.ReportType;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Date;
 import java.util.List;
@@ -20,10 +20,10 @@ public class ReportService {
         return reportRepository.findAll();
     }
 
-    public Report addNewReport(Date date, Localisation localisation,
-                                ReportType reportType,  Integer threatDegree,
-                                String nameDescription,  String reportDescription) {
-        return reportRepository.save(new Report(date, localisation, reportType,
-                threatDegree, nameDescription, reportDescription));
-    }
+//    public Report addNewReport(Date date, Location localisation,
+//                               ReportType reportType, Integer threatDegree,
+//                               String description) {
+//        return reportRepository.save(new Report(date, localisation, reportType,
+//                threatDegree, nameDescription, reportDescription));
+//    }
 }

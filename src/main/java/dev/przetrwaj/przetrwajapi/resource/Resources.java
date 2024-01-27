@@ -1,5 +1,7 @@
-package dev.przetrwaj.przetrwajapi.ResourcePackage;
+package dev.przetrwaj.przetrwajapi.resource;
 
+import dev.przetrwaj.przetrwajapi.resource.point.ResourcePoint;
+import dev.przetrwaj.przetrwajapi.resource.type.ResourceTypes;
 import jakarta.persistence.*;
 
 @Entity(name = "Resources")
@@ -10,7 +12,7 @@ public class Resources{
 
     private Double quantity;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(
             unique = true
     )
@@ -18,7 +20,7 @@ public class Resources{
 
     @ManyToOne
     @JoinColumn(name="resourcePointId", nullable=false)
-    private ResourcePoints resourcePoint;
+    private ResourcePoint resourcePoint;
 
     public Long getResourceId() {
         return resourceId;
@@ -47,7 +49,7 @@ public class Resources{
     public Resources(){
 
     }
-    public Resources(Double quantity, ResourceTypes resourceType, ResourcePoints resourcePoint) {
+    public Resources(Double quantity, ResourceTypes resourceType, ResourcePoint resourcePoint) {
 
         this.quantity = quantity;
         this.resourceType = resourceType;

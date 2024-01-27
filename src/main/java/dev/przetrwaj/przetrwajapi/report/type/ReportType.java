@@ -1,24 +1,21 @@
-package dev.przetrwaj.przetrwajapi.report;
+package dev.przetrwaj.przetrwajapi.report.type;
 
-import dev.przetrwaj.przetrwajapi.ResourcePackage.ResourceTypes;
+import dev.przetrwaj.przetrwajapi.resource.type.ResourceTypes;
 import jakarta.persistence.*;
 
 import java.util.List;
-import java.util.Set;
 
 
-@Entity(name = "ReportType")
+@Entity(name = "report_types")
 public class ReportType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String typeName;
     private String typeDescription;
-    @OneToMany(mappedBy="id")
-    private Set<Report> report;
     @ManyToMany
-    @JoinTable(name = "ResourceTypes")
-    private List<ResourceTypes> recommendedSources;
+    @JoinTable(name = "resources_for_report_type")
+    private List<ResourceTypes> recommendedResources;
 
     public ReportType() {}
     public ReportType(String typeName, String typeDescription) {

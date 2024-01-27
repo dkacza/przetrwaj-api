@@ -1,9 +1,7 @@
-package dev.przetrwaj.przetrwajapi.report;
+package dev.przetrwaj.przetrwajapi.report.type;
 
-import dev.przetrwaj.przetrwajapi.Localisation.Localisation;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 @RestController

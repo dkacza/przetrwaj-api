@@ -1,11 +1,12 @@
 package dev.przetrwaj.przetrwajapi.report;
 
-import dev.przetrwaj.przetrwajapi.Localisation.Localisation;
+import dev.przetrwaj.przetrwajapi.location.Location;
+import dev.przetrwaj.przetrwajapi.report.type.ReportType;
 import jakarta.persistence.*;
 
 import java.util.Date;
 
-@Entity(name = "Report")
+@Entity(name = "reports")
 public class Report {
 
     @Id
@@ -14,55 +15,50 @@ public class Report {
     private Date date;
     private int rejections;
     private int confirmations;
+    private int threatDegree;
+    private String description;
     @OneToOne
     @JoinColumn(
             unique = true
     )
-    private Localisation localisation;
+    private Location location;
     @ManyToOne
     @JoinColumn(
-            name = "ReportTypeId", nullable = false)
+            name = "report_type_id", nullable = false)
     private ReportType reportType;
 
-    private int threatDegree;
-
-    private String nameDescription;
-
-    private String reportDescription;
 
     public Report() {
     }
 
-    public Report(Date date, int rejections, int confirmations, Localisation localisation,
-                  ReportType reportType, int threatDegree, String nameDescription, String reportDescription) {
+    public Report(Date date, int rejections, int confirmations, Location localisation,
+                  ReportType reportType, int threatDegree, String description) {
         this.date = date;
         this.rejections = rejections;
         this.confirmations = confirmations;
-        this.localisation = localisation;
+        this.location = localisation;
         this.reportType = reportType;
         this.threatDegree = threatDegree;
-        this.nameDescription = nameDescription;
-        this.reportDescription = reportDescription;
+        this.description = description;
     }
 
-    public Report(Date date, Localisation localisation, ReportType reportType,
-                  int threatDegree, String nameDescription, String reportDescription) {
+    public Report(Date date, Location localisation, ReportType reportType,
+                  int threatDegree, String description) {
         this.date = date;
-        this.localisation = localisation;
+        this.location = localisation;
         this.reportType = reportType;
         this.threatDegree = threatDegree;
-        this.nameDescription = nameDescription;
-        this.reportDescription = reportDescription;
+        this.description = description;
 
-        this.rejections     = 0;
-        this.confirmations  = 0;
+        this.rejections = 0;
+        this.confirmations = 0;
     }
 
-    public java.util.Date getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(java.util.Date date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -97,22 +93,13 @@ public class Report {
     public void setThreatDegree(int threatDegree) {
         this.threatDegree = threatDegree;
     }
-    public String getNameDescription() {
-        return nameDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setNameDescription(String nameDescription) {
-        this.nameDescription = nameDescription;
+    public void setDescription(String nameDescription) {
+        this.description = nameDescription;
     }
-
-    public String getReportDescription() {
-        return reportDescription;
-    }
-
-    public void setReportDescription(String reportDescription) {
-        this.reportDescription = reportDescription;
-    }
-
 
     public void setId(Long id) {
         this.id = id;

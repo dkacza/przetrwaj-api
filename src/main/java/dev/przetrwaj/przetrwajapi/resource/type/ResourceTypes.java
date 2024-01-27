@@ -1,69 +1,50 @@
-package dev.przetrwaj.przetrwajapi.ResourcePackage;
+package dev.przetrwaj.przetrwajapi.resource.type;
 
-import dev.przetrwaj.przetrwajapi.report.ReportType;
+import dev.przetrwaj.przetrwajapi.report.type.ReportType;
+import dev.przetrwaj.przetrwajapi.resource.Resources;
 import jakarta.persistence.*;
 
 import java.util.Set;
 
-@Entity(name = "ResourceTypes")
+@Entity(name = "resource_types")
 public class ResourceTypes{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long resourceTypeId;
-
+    private Long id;
     private String name;
-
     private String description;
-
     @Enumerated(EnumType.STRING)
     private Units unit;
-    @OneToOne
-    @JoinColumn(
-            unique = true
-    )
-    private Resources resources;
-    @ManyToMany
-    private Set<ReportType> reportTypes;
-    /*
-    ADD CONSTRUCTOR, GETTER, SETTER!!!
-    */
-    public Long getResourceTypeId() {
-        return resourceTypeId;
-    }
 
-    public void setResourceTypeId(Long id) {
-        this.resourceTypeId = id;
+    public Long getId() {
+        return id;
     }
-
+    public void setId(Long id) {
+        this.id = id;
+    }
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
-
     public Units getUnit() {
         return unit;
     }
-
     public void setUnit(Units unit) {
         this.unit = unit;
     }
 
     public ResourceTypes() {
     }
-
     public ResourceTypes(Long resourceTypeId, String name, String description, Units unit) {
-        this.resourceTypeId = resourceTypeId;
+        this.id = resourceTypeId;
         this.name = name;
         this.description = description;
         this.unit = unit;

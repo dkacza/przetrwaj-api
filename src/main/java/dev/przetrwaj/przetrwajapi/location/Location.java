@@ -1,34 +1,24 @@
-package dev.przetrwaj.przetrwajapi.Localisation;
+package dev.przetrwaj.przetrwajapi.location;
 
-import dev.przetrwaj.przetrwajapi.ResourcePackage.ResourcePoints;
-import dev.przetrwaj.przetrwajapi.report.Report;
 import jakarta.persistence.*;
 
-@Entity(name = "localisation")
-public class Localisation
+@Entity(name = "locations")
+public class Location
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
-    @JoinColumn(
-            unique = true
-    )
-    private Report report;
-    @OneToOne
-    @JoinColumn(
-            unique = true
-    )
-    private ResourcePoints resourcePoints;
     private String adress;
     private Double longitude; //Długość geograficzna
-    private Double latitude; //Szerokośc geograficzna
-    public Localisation(String adress, Double longitude, Double latitude){
+    private Double latitude; //Szerokość geograficzna
+
+    public Location(String adress, Double longitude, Double latitude){
         this.adress = adress;
         this.longitude = longitude;
         this.latitude = latitude;
     }
-    public Localisation(){}
+    public Location() {}
+
     public Long getId() {
         return id;
     }

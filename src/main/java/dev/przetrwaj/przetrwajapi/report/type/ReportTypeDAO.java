@@ -1,4 +1,6 @@
-package dev.przetrwaj.przetrwajapi.report;
+package dev.przetrwaj.przetrwajapi.report.type;
+
+import dev.przetrwaj.przetrwajapi.report.type.ReportType;
 
 public class ReportTypeDAO {
     private String typeName;
