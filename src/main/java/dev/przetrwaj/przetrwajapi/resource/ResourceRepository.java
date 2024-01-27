@@ -4,5 +4,5 @@ import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ResourcesRepository extends ListCrudRepository<Resources, Long> {
+public interface ResourceRepository extends ListCrudRepository<Resource, Long> {
 }

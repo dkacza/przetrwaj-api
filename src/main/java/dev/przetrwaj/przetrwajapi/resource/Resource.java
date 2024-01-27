@@ -4,20 +4,17 @@ import dev.przetrwaj.przetrwajapi.resource.point.ResourcePoint;
 import dev.przetrwaj.przetrwajapi.resource.type.ResourceTypes;
 import jakarta.persistence.*;
 
-@Entity(name = "Resources")
-public class Resources{
+@Entity(name = "resources")
+public class Resource {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long resourceId;
-
     private Double quantity;
-
     @ManyToOne
     @JoinColumn(
             unique = true
     )
     private ResourceTypes resourceType;
-
     @ManyToOne
     @JoinColumn(name="resourcePointId", nullable=false)
     private ResourcePoint resourcePoint;
@@ -46,10 +43,10 @@ public class Resources{
         this.resourceType = resourceType;
     }
 
-    public Resources(){
+    public Resource(){
 
     }
-    public Resources(Double quantity, ResourceTypes resourceType, ResourcePoint resourcePoint) {
+    public Resource(Double quantity, ResourceTypes resourceType, ResourcePoint resourcePoint) {
 
         this.quantity = quantity;
         this.resourceType = resourceType;

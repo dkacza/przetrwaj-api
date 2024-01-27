@@ -12,6 +12,7 @@ public class ReportTypeController {
     public ReportTypeController(ReportTypeService reportTypeService) {
         this.reportTypeService = reportTypeService;
     }
+
     @GetMapping
     public List<ReportType> getAllReportTypes(){
         return reportTypeService.getAllReportTypes();

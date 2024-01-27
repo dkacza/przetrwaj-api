@@ -8,12 +8,12 @@ public class Location
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String adress;
-    private Double longitude; //Długość geograficzna
-    private Double latitude; //Szerokość geograficzna
+    private String address;
+    private Double longitude;
+    private Double latitude;
 
-    public Location(String adress, Double longitude, Double latitude){
-        this.adress = adress;
+    public Location(String address, Double longitude, Double latitude){
+        this.address = address;
         this.longitude = longitude;
         this.latitude = latitude;
     }
@@ -26,12 +26,12 @@ public class Location
     public void setId(Long id) {
         this.id = id;
     }
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String adress) {
+        this.address = adress;
     }
 
     public Double getLongitude() {

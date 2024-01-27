@@ -1,10 +1,6 @@
 package dev.przetrwaj.przetrwajapi.resource.type;
 
-import dev.przetrwaj.przetrwajapi.report.type.ReportType;
-import dev.przetrwaj.przetrwajapi.resource.Resources;
 import jakarta.persistence.*;
-
-import java.util.Set;
 
 @Entity(name = "resource_types")
 public class ResourceTypes{
