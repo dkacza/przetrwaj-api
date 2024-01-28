@@ -1,6 +1,7 @@
 package dev.przetrwaj.przetrwajapi.location;
 
 import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity(name = "locations")
 public class Location
@@ -8,8 +9,11 @@ public class Location
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
     private String address;
+    @NotNull
     private Double longitude;
+    @NotNull
     private Double latitude;
 
     public Location(String address, Double longitude, Double latitude){
