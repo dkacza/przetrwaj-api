@@ -2,6 +2,7 @@ package dev.przetrwaj.przetrwajapi.report;
 
 import dev.przetrwaj.przetrwajapi.location.Location;
 import dev.przetrwaj.przetrwajapi.report.type.ReportType;
+import dev.przetrwaj.przetrwajapi.report.type.ReportTypeDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -20,10 +21,9 @@ public class ReportService {
         return reportRepository.findAll();
     }
 
-//    public Report addNewReport(Date date, Location localisation,
-//                               ReportType reportType, Integer threatDegree,
-//                               String description) {
-//        return reportRepository.save(new Report(date, localisation, reportType,
-//                threatDegree, nameDescription, reportDescription));
-//    }
+    public Report addNewReport(ReportDTO reportDTO) {
+        Report newReport = reportDTO.convertFromDTO();
+        reportRepository.save(newReport);
+        return newReport;
+    }
 }

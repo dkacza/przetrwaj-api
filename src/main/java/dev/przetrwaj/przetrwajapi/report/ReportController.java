@@ -2,6 +2,7 @@ package dev.przetrwaj.przetrwajapi.report;
 
 import dev.przetrwaj.przetrwajapi.location.Location;
 import dev.przetrwaj.przetrwajapi.report.type.ReportType;
+import dev.przetrwaj.przetrwajapi.report.type.ReportTypeDTO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -19,10 +20,8 @@ public class ReportController {
     public List<Report> getAllReports(){
         return reportService.getAllReports();
     }
-//    @PostMapping
-//    public Report addReport(@RequestBody Date date, @RequestBody Location localisation,
-//                            @RequestBody ReportType reportType, @RequestBody Integer threatDegree,
-//                            @RequestBody String nameDescription, @RequestBody String reportDescription){
-//        return reportService.addNewReport(date, localisation, reportType, threatDegree, nameDescription, reportDescription);
-//    }
+    @PostMapping
+    public Report addReport(@RequestBody ReportDTO reportDTO){
+        return reportService.addNewReport(reportDTO);
+    }
 }

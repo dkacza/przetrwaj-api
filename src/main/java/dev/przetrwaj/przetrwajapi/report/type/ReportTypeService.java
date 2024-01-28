@@ -16,8 +16,8 @@ public class ReportTypeService {
         return reportTypeRepository.findAll();
     }
 
-    public ReportType addNewReportType(ReportTypeDTO reportTypeDAO) {
-        ReportType newReportType = reportTypeDAO.convertFromDTO();
+    public ReportType addNewReportType(ReportTypeDTO reportTypeDTO) {
+        ReportType newReportType = reportTypeDTO.convertFromDTO();
         reportTypeRepository.save(newReportType);
         return newReportType;
     }
