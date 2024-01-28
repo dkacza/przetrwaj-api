@@ -2,37 +2,23 @@ package dev.przetrwaj.przetrwajapi.report;
 
 import dev.przetrwaj.przetrwajapi.location.Location;
 import dev.przetrwaj.przetrwajapi.report.type.ReportType;
-import jakarta.persistence.*;
+
 
 import java.util.Date;
 
-@Entity(name = "reports")
-public class Report {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class ReportDTO {
     private Date date;
     private int rejections;
     private int confirmations;
     private int threatDegree;
     private String description;
-    @OneToOne
-    @JoinColumn(
-            unique = true
-    )
     private Location location;
-    @ManyToOne
-    @JoinColumn(
-            name = "report_type_id", nullable = false)
     private ReportType reportType;
-
-
-    public Report() {
+    public ReportDTO() {
     }
 
-    public Report(Date date, int rejections, int confirmations, Location localisation,
-                  ReportType reportType, int threatDegree, String description) {
+    public ReportDTO(Date date, int rejections, int confirmations, Location localisation,
+                     ReportType reportType, int threatDegree, String description) {
         this.date = date;
         this.rejections = rejections;
         this.confirmations = confirmations;
@@ -42,8 +28,8 @@ public class Report {
         this.description = description;
     }
 
-    public Report(Date date, Location localisation, ReportType reportType,
-                  int threatDegree, String description) {
+    public ReportDTO(Date date, Location localisation, ReportType reportType,
+                     int threatDegree, String description) {
         this.date = date;
         this.location = localisation;
         this.reportType = reportType;
@@ -96,22 +82,11 @@ public class Report {
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String nameDescription) {
         this.description = nameDescription;
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public ReportDTO convertToDTO(Date date, Location localisation, ReportType reportType,
-                     int threatDegree, String description) {
-            return new ReportDTO(this.date, this.location, this.reportType, this.threatDegree, this.description);
+    public Report convertFromDTO() {
+        return new Report(this.date, this.location, this.reportType, this.threatDegree, this.description);
     }
 
 }
