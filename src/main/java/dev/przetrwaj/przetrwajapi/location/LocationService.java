@@ -2,6 +2,7 @@ package dev.przetrwaj.przetrwajapi.location;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -40,5 +41,20 @@ public class LocationService {
     private Double getDistance(Location location, LocationDTO locationDTO){
         return Math.abs(location.getLatitude() - locationDTO.getLatitude()) +
                 Math.abs(location.getLongitude() - locationDTO.getLongitude());
+    }
+
+    //TODO: May be used in defferent files, TBD
+    public List<Location> getLocationsInBounds(Double top, Double bottom, Double left, Double right){
+        List<Location> source = locationRepository.findAll();
+        List<Location> result = new ArrayList<Location>();
+        for(Location location:source){
+            if(this.locationIsInBounds(location, top, bottom, left, right)){
+                result.add(location);
+            }
+        }
+        return result;
+    }
+    private boolean locationIsInBounds(Location location, Double top, Double bottom, Double left, Double right){
+        return (location.getLongitude() > left && location.getLongitude() < right & location.getLatitude() < top && location.getLatitude() > bottom);
     }
 }
