@@ -1,8 +1,5 @@
 package dev.przetrwaj.przetrwajapi.location;
 
-import dev.przetrwaj.przetrwajapi.report.type.ReportType;
-import dev.przetrwaj.przetrwajapi.report.type.ReportTypeDAO;
-import dev.przetrwaj.przetrwajapi.report.type.ReportTypeService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +19,6 @@ public class LocationController {
     }
     @PostMapping
     public Location addLocation(@RequestBody LocationDTO locationDTO){
-        return locationService.addNewReportType(locationDTO);
+        return locationService.addNewLocation(locationDTO);
     }
 }
