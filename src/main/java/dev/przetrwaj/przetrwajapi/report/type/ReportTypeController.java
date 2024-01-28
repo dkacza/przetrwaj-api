@@ -18,7 +18,7 @@ public class ReportTypeController {
         return reportTypeService.getAllReportTypes();
     }
     @PostMapping
-    public ReportType addReportType(@RequestBody ReportTypeDAO reportTypeDAO){
-        return reportTypeService.addNewReportType(reportTypeDAO);
+    public ReportType addReportType(@RequestBody ReportTypeDTO reportTypeDTO){
+        return reportTypeService.addNewReportType(reportTypeDTO);
     }
 }

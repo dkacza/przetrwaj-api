@@ -41,7 +41,7 @@ public class ReportType {
     public void setTypeDescription(String typeDescription) {
         this.typeDescription = typeDescription;
     }
-    public ReportTypeDAO convertToDAO() {
-        return new ReportTypeDAO(this.typeName, this.typeDescription);
+    public ReportTypeDTO convertToDTO() {
+        return new ReportTypeDTO(this.typeName, this.typeDescription);
     }
 }

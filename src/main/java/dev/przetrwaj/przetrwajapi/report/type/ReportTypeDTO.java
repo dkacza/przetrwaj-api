@@ -1,12 +1,10 @@
 package dev.przetrwaj.przetrwajapi.report.type;
 
-import dev.przetrwaj.przetrwajapi.report.type.ReportType;
-
-public class ReportTypeDAO {
+public class ReportTypeDTO {
     private String typeName;
     private String typeDescription;
 
-    public ReportTypeDAO(String typeName, String typeDescription) {
+    public ReportTypeDTO(String typeName, String typeDescription) {
         this.typeName = typeName;
         this.typeDescription = typeDescription;
     }
@@ -24,7 +22,7 @@ public class ReportTypeDAO {
         this.typeDescription = typeDescription;
     }
 
-    public ReportType convertFromDAO() {
+    public ReportType convertFromDTO() {
         return new ReportType(this.typeName, this.typeDescription);
     }
 }

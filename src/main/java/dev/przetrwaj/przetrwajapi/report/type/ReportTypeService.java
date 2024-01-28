@@ -1,8 +1,5 @@
 package dev.przetrwaj.przetrwajapi.report.type;
 
-import dev.przetrwaj.przetrwajapi.report.type.ReportType;
-import dev.przetrwaj.przetrwajapi.report.type.ReportTypeDAO;
-import dev.przetrwaj.przetrwajapi.report.type.ReportTypeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,8 +16,8 @@ public class ReportTypeService {
         return reportTypeRepository.findAll();
     }
 
-    public ReportType addNewReportType(ReportTypeDAO reportTypeDAO) {
-        ReportType newReportType = reportTypeDAO.convertFromDAO();
+    public ReportType addNewReportType(ReportTypeDTO reportTypeDAO) {
+        ReportType newReportType = reportTypeDAO.convertFromDTO();
         reportTypeRepository.save(newReportType);
         return newReportType;
     }
