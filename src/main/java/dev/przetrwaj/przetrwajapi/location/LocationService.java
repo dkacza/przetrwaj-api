@@ -1,8 +1,5 @@
 package dev.przetrwaj.przetrwajapi.location;
 
-import dev.przetrwaj.przetrwajapi.report.type.ReportType;
-import dev.przetrwaj.przetrwajapi.report.type.ReportTypeDAO;
-import dev.przetrwaj.przetrwajapi.report.type.ReportTypeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
