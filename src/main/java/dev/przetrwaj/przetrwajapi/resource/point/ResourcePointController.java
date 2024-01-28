@@ -20,8 +20,8 @@ public class ResourcePointController {
         return resourcePointsService.getAllResourcePoints();
     }
     @PostMapping
-    public ResourcePoint addResourcePoints(@RequestBody String name, @RequestBody Location location){
-        return resourcePointsService.addNewResourcePoints(name, location);
+    public ResourcePoint addResourcePoints(@RequestBody ResourcePointDTO resourcePointDTO){
+        return resourcePointsService.addNewResourcePoints(resourcePointDTO);
     }
     @PostMapping("/addResource")
     public Resource addResourceToPoint(@RequestBody Double quantity, @RequestBody ResourceTypes resourceType, @RequestBody ResourcePoint resourcePoint){
