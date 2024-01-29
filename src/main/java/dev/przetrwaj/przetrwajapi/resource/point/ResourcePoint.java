@@ -3,6 +3,7 @@ package dev.przetrwaj.przetrwajapi.resource.point;
 import dev.przetrwaj.przetrwajapi.location.Location;
 import dev.przetrwaj.przetrwajapi.resource.Resource;
 import jakarta.persistence.*;
+import org.jetbrains.annotations.NotNull;
 
 
 import java.util.HashSet;
@@ -14,9 +15,12 @@ public class ResourcePoint {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
     private String name;
+    @NotNull
     @OneToMany(mappedBy="resourcePoint")
     private Set<Resource> resources;
+    @NotNull
     @OneToOne
     @JoinColumn(
             unique = true
@@ -58,6 +62,14 @@ public class ResourcePoint {
     public ResourcePoint(String resourcePointName, Location location) {
         this.resources = new HashSet<Resource>();
         this.name = resourcePointName;
+        this.location = location;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
         this.location = location;
     }
 }

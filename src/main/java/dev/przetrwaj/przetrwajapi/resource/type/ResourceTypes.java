@@ -1,14 +1,18 @@
 package dev.przetrwaj.przetrwajapi.resource.type;
 
 import jakarta.persistence.*;
+import org.jetbrains.annotations.NotNull;
 
 @Entity(name = "resource_types")
 public class ResourceTypes{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
     private String name;
+    @NotNull
     private String description;
+    @NotNull
     @Enumerated(EnumType.STRING)
     private Units unit;
 

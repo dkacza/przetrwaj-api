@@ -3,18 +3,22 @@ package dev.przetrwaj.przetrwajapi.resource;
 import dev.przetrwaj.przetrwajapi.resource.point.ResourcePoint;
 import dev.przetrwaj.przetrwajapi.resource.type.ResourceTypes;
 import jakarta.persistence.*;
+import org.jetbrains.annotations.NotNull;
 
 @Entity(name = "resources")
 public class Resource {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long resourceId;
+    @NotNull
     private Double quantity;
+    @NotNull
     @ManyToOne
     @JoinColumn(
             unique = true
     )
     private ResourceTypes resourceType;
+    @NotNull
     @ManyToOne
     @JoinColumn(name="resourcePointId", nullable=false)
     private ResourcePoint resourcePoint;

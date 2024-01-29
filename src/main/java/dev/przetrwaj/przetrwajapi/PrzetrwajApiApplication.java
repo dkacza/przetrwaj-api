@@ -8,6 +8,8 @@ public class PrzetrwajApiApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(PrzetrwajApiApplication.class, args);
+
     }
+
 
 }

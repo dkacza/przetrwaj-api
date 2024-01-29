@@ -3,7 +3,9 @@ package dev.przetrwaj.przetrwajapi.resource.point;
 import dev.przetrwaj.przetrwajapi.location.Location;
 import dev.przetrwaj.przetrwajapi.location.LocationRepository;
 import dev.przetrwaj.przetrwajapi.resource.Resource;
+import dev.przetrwaj.przetrwajapi.resource.ResourceDTO;
 import dev.przetrwaj.przetrwajapi.resource.ResourceRepository;
+import dev.przetrwaj.przetrwajapi.resource.type.ResourceTypeRepository;
 import dev.przetrwaj.przetrwajapi.resource.type.ResourceTypes;
 import org.springframework.stereotype.Service;
 
@@ -14,16 +16,34 @@ public class ResourcePointsService {
     private final ResourcePointRepository resourcePointsRepository;
     private final ResourceRepository resourcesRepository;
     private final LocationRepository locationRepository;
+    private final ResourceTypeRepository resourceTypeRepository;
 
     public ResourcePointsService(ResourcePointRepository resourcePointsRepository, ResourceRepository resourcesRepository,
-                                 LocationRepository locationRepository) {
+                                 LocationRepository locationRepository, ResourceTypeRepository resourceTypeRepository) {
         this.resourcePointsRepository = resourcePointsRepository;
         this.resourcesRepository = resourcesRepository;
         this.locationRepository = locationRepository;
+        this.resourceTypeRepository = resourceTypeRepository;
     }
 
     public List<ResourcePoint> getAllResourcePoints(){
         return resourcePointsRepository.findAll();
+    }
+    public List<ResourcePoint> getResourcePointsByLocation(CoordinatesDTO coordinatesDTO){
+
+        List <ResourcePoint> allPoints = resourcePointsRepository.findAll();
+        List <ResourcePoint> visiblePoints = new ArrayList<>();
+        for(ResourcePoint rp : allPoints){
+            if(locationIsInBounds(rp.getLocation(),coordinatesDTO.getLatitudeUpperBoundry(),
+                                  coordinatesDTO.getLatitudeLowerBoundry(),coordinatesDTO.getLongitudeLowerBoundry(),
+                                  coordinatesDTO.getLongitudeUpperBoundry()))
+            {
+                visiblePoints.add(rp);
+            }
+        }
+        return visiblePoints;
+
+
     }
     public ResourcePoint addNewResourcePoints(ResourcePointDTO resourcePointDTO) {
         Long locationId = resourcePointDTO.getLocationId();
@@ -33,8 +53,14 @@ public class ResourcePointsService {
             return resourcePointsRepository.save(new ResourcePoint(name, location));
 
     }
-    public Resource addResourceToPoint(Double quantity, ResourceTypes resourceType, ResourcePoint resourcePoint ) {
+    public Resource addResourceToPoint(ResourceDTO resourceDTO) {
+        Double quantity = resourceDTO.getQuantity();
+        ResourcePoint resourcePoint = resourcePointsRepository.findById(resourceDTO.getPointId()).orElse(null);
+        ResourceTypes resourceType = resourceTypeRepository.findById(resourceDTO.getResourceTypeId()).orElse(null);
 
         return resourcesRepository.save(new Resource(quantity, resourceType, resourcePoint));
+    }
+    private boolean locationIsInBounds(Location location, Double top, Double bottom, Double left, Double right){
+        return (location.getLongitude() > left && location.getLongitude() < right & location.getLatitude() < top && location.getLatitude() > bottom);
     }
 }
