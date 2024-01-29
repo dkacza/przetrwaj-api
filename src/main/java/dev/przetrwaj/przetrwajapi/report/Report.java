@@ -3,6 +3,7 @@ package dev.przetrwaj.przetrwajapi.report;
 import dev.przetrwaj.przetrwajapi.location.Location;
 import dev.przetrwaj.przetrwajapi.report.type.ReportType;
 import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.Date;
 
@@ -12,10 +13,15 @@ public class Report {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
     private Date date;
+    @NotNull
     private int rejections;
+    @NotNull
     private int confirmations;
+    @NotNull
     private int threatDegree;
+    @NotNull
     private String description;
     @OneToOne
     @JoinColumn(
@@ -109,9 +115,10 @@ public class Report {
         return id;
     }
 
-    public ReportDTO convertToDTO(Date date, Location localisation, ReportType reportType,
-                     int threatDegree, String description) {
-            return new ReportDTO(this.date, this.location, this.reportType, this.threatDegree, this.description);
+    public ReportDTO convertToDTO(Date date, int rejections, int confirmations, Location localisation,
+                                  ReportType reportType, int threatDegree, String description) {
+            return new ReportDTO(this.date, this.rejections, this.confirmations,
+                    this.location, this.reportType, this.threatDegree, this.description);
     }
 
 }

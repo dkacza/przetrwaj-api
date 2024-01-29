@@ -86,7 +86,7 @@ public class ReportDTO {
         this.description = nameDescription;
     }
     public Report convertFromDTO() {
-        return new Report(this.date, this.location, this.reportType, this.threatDegree, this.description);
+        return new Report(this.date, this.rejections, this.confirmations,
+                this.location, this.reportType, this.threatDegree, this.description);
     }
-
 }
