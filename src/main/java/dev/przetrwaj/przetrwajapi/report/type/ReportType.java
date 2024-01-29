@@ -1,6 +1,6 @@
 package dev.przetrwaj.przetrwajapi.report.type;
 
-import dev.przetrwaj.przetrwajapi.resource.type.ResourceTypes;
+import dev.przetrwaj.przetrwajapi.resource.type.ResourceType;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -15,7 +15,7 @@ public class ReportType {
     private String typeDescription;
     @ManyToMany
     @JoinTable(name = "resources_for_report_type")
-    private List<ResourceTypes> recommendedResources;
+    private List<ResourceType> recommendedResources;
 
     public ReportType() {}
     public ReportType(String typeName, String typeDescription) {

@@ -6,7 +6,7 @@ import dev.przetrwaj.przetrwajapi.resource.Resource;
 import dev.przetrwaj.przetrwajapi.resource.ResourceDTO;
 import dev.przetrwaj.przetrwajapi.resource.ResourceRepository;
 import dev.przetrwaj.przetrwajapi.resource.type.ResourceTypeRepository;
-import dev.przetrwaj.przetrwajapi.resource.type.ResourceTypes;
+import dev.przetrwaj.przetrwajapi.resource.type.ResourceType;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -53,7 +53,7 @@ public class ResourcePointsService {
     public Resource addResourceToPoint(ResourceDTO resourceDTO) {
         Double quantity = resourceDTO.getQuantity();
         ResourcePoint resourcePoint = resourcePointsRepository.findById(resourceDTO.getPointId()).orElse(null);
-        ResourceTypes resourceType = resourceTypeRepository.findById(resourceDTO.getResourceTypeId()).orElse(null);
+        ResourceType resourceType = resourceTypeRepository.findById(resourceDTO.getResourceTypeId()).orElse(null);
 
         return resourcesRepository.save(new Resource(quantity, resourceType, resourcePoint));
     }

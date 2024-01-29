@@ -1,7 +1,7 @@
 package dev.przetrwaj.przetrwajapi.resource;
 
 import dev.przetrwaj.przetrwajapi.resource.point.ResourcePoint;
-import dev.przetrwaj.przetrwajapi.resource.type.ResourceTypes;
+import dev.przetrwaj.przetrwajapi.resource.type.ResourceType;
 import jakarta.persistence.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -17,7 +17,7 @@ public class Resource {
     @JoinColumn(
             unique = true
     )
-    private ResourceTypes resourceType;
+    private ResourceType resourceType;
     @NotNull
     @ManyToOne
     @JoinColumn(name="resourcePointId", nullable=false)
@@ -39,18 +39,18 @@ public class Resource {
         this.quantity = quantity;
     }
 
-    public ResourceTypes getResourceType() {
+    public ResourceType getResourceType() {
         return resourceType;
     }
 
-    public void setResourceType(ResourceTypes resourceType) {
+    public void setResourceType(ResourceType resourceType) {
         this.resourceType = resourceType;
     }
 
     public Resource(){
 
     }
-    public Resource(Double quantity, ResourceTypes resourceType, ResourcePoint resourcePoint) {
+    public Resource(Double quantity, ResourceType resourceType, ResourcePoint resourcePoint) {
 
         this.quantity = quantity;
         this.resourceType = resourceType;
