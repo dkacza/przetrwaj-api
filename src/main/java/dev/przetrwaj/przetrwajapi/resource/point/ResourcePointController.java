@@ -4,6 +4,7 @@ import dev.przetrwaj.przetrwajapi.location.Location;
 import dev.przetrwaj.przetrwajapi.resource.Resource;
 import dev.przetrwaj.przetrwajapi.resource.ResourceDTO;
 import dev.przetrwaj.przetrwajapi.resource.type.ResourceTypes;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class ResourcePointController {
     public List<ResourcePoint> getAllResourcePoints(){
         return resourcePointsService.getAllResourcePoints();
     }
-    @GetMapping("/api/v1/getResByLoc")
+    @GetMapping("/getResByLoc")
     public List<ResourcePoint> getResourcePointsByLocation(@RequestBody CoordinatesDTO coordinatesDTO){
         return resourcePointsService.getResourcePointsByLocation(coordinatesDTO);
     }

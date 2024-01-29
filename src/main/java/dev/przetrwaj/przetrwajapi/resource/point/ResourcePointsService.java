@@ -30,7 +30,6 @@ public class ResourcePointsService {
         return resourcePointsRepository.findAll();
     }
     public List<ResourcePoint> getResourcePointsByLocation(CoordinatesDTO coordinatesDTO){
-
         List <ResourcePoint> allPoints = resourcePointsRepository.findAll();
         List <ResourcePoint> visiblePoints = new ArrayList<>();
         for(ResourcePoint rp : allPoints){
@@ -42,8 +41,6 @@ public class ResourcePointsService {
             }
         }
         return visiblePoints;
-
-
     }
     public ResourcePoint addNewResourcePoints(ResourcePointDTO resourcePointDTO) {
         Long locationId = resourcePointDTO.getLocationId();
