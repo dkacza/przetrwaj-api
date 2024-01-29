@@ -23,11 +23,13 @@ public class Report {
     private int threatDegree;
     @NotNull
     private String description;
+    @NotNull
     @OneToOne
     @JoinColumn(
             unique = true
     )
     private Location location;
+    @NotNull
     @ManyToOne
     @JoinColumn(
             name = "report_type_id", nullable = false)
