@@ -1,10 +1,7 @@
 package dev.przetrwaj.przetrwajapi.resource.point;
 
-import dev.przetrwaj.przetrwajapi.location.Location;
 import dev.przetrwaj.przetrwajapi.resource.Resource;
 import dev.przetrwaj.przetrwajapi.resource.ResourceDTO;
-import dev.przetrwaj.przetrwajapi.resource.type.ResourceTypes;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

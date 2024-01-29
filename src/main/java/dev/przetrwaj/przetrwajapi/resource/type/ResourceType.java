@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import org.jetbrains.annotations.NotNull;
 
 @Entity(name = "resource_types")
-public class ResourceTypes{
+public class ResourceType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -41,10 +41,9 @@ public class ResourceTypes{
         this.unit = unit;
     }
 
-    public ResourceTypes() {
+    public ResourceType() {
     }
-    public ResourceTypes(Long resourceTypeId, String name, String description, Units unit) {
-        this.id = resourceTypeId;
+    public ResourceType(String name, String description, Units unit) {
         this.name = name;
         this.description = description;
         this.unit = unit;
