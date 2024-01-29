@@ -9,7 +9,6 @@ public class Location
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
     private String address;
     @NotNull
     private Double longitude;
