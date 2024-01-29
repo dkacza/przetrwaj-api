@@ -14,6 +14,7 @@ public class PrzetrwajApiApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(PrzetrwajApiApplication.class, args);
         ResourceTypeService bean = context.getBean(ResourceTypeService.class);
+
         bean.addResourceType(new ResourceType("Woda","pszna", Units.LITERS));
         bean.addResourceType(new ResourceType("Worki z Piaskiem","też pszne", Units.PIECES));
         bean.addResourceType(new ResourceType("Chleb","czerstwy", Units.PIECES));
