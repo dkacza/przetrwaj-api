@@ -2,6 +2,7 @@ package dev.przetrwaj.przetrwajapi.resource.point;
 
 import dev.przetrwaj.przetrwajapi.resource.Resource;
 import dev.przetrwaj.przetrwajapi.resource.ResourceDTO;
+import dev.przetrwaj.przetrwajapi.resource.ResourceQuantityDTO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,6 +30,18 @@ public class ResourcePointController {
     @PostMapping("/addResource")
     public Resource addResourceToPoint(@RequestBody ResourceDTO resourceDTO){
         return resourcePointsService.addResourceToPoint(resourceDTO);
+    }
+    @PostMapping("/removeResource")
+    public void removeResource(@RequestBody Long resourceId){
+        resourcePointsService.removeResource(resourceId);
+    }
+    @PostMapping("/removeResourcePoint")
+    public void removeResourcePoint(@RequestBody Long resourcePointId){
+        resourcePointsService.removeResourcePoint(resourcePointId);
+    }
+    @PostMapping("/changeResQuantity")
+    public Resource changeResourceQuantity(@RequestBody ResourceQuantityDTO resourceQuantityDTO){
+        return resourcePointsService.changeResourceQuantity(resourceQuantityDTO);
     }
 
 }
