@@ -39,9 +39,9 @@ public class Report {
     public Report() {
     }
 
-    public Report(Date date, int rejections, int confirmations, Location localisation,
+    public Report(int rejections, int confirmations, Location localisation,
                   ReportType reportType, int threatDegree, String description) {
-        this.date = date;
+        this.date = new Date();
         this.rejections = rejections;
         this.confirmations = confirmations;
         this.location = localisation;
@@ -50,9 +50,9 @@ public class Report {
         this.description = description;
     }
 
-    public Report(Date date, Location localisation, ReportType reportType,
+    public Report(Location localisation, ReportType reportType,
                   int threatDegree, String description) {
-        this.date = date;
+        this.date = new Date();
         this.location = localisation;
         this.reportType = reportType;
         this.threatDegree = threatDegree;
@@ -116,11 +116,13 @@ public class Report {
     public Long getId() {
         return id;
     }
-
-    public ReportDTO convertToDTO(Date date, int rejections, int confirmations, Location localisation,
-                                  ReportType reportType, int threatDegree, String description) {
-            return new ReportDTO(this.date, this.rejections, this.confirmations,
-                    this.location, this.reportType, this.threatDegree, this.description);
+    public Location getLocation() {
+        return location;
     }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
 
 }

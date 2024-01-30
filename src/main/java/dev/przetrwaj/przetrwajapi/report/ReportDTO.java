@@ -7,45 +7,52 @@ import dev.przetrwaj.przetrwajapi.report.type.ReportType;
 import java.util.Date;
 
 public class ReportDTO {
-    private Date date;
+
     private int rejections;
     private int confirmations;
     private int threatDegree;
     private String description;
-    private Location location;
-    private ReportType reportType;
+    private Long locationId;
+    private Long reportTypeID;
+
+
     public ReportDTO() {
     }
 
-    public ReportDTO(Date date, int rejections, int confirmations, Location localisation,
-                     ReportType reportType, int threatDegree, String description) {
-        this.date = date;
+
+    public ReportDTO(int rejections, int confirmations, Long locationId,
+                     Long reportTypeID, int threatDegree, String description) {
         this.rejections = rejections;
         this.confirmations = confirmations;
-        this.location = localisation;
-        this.reportType = reportType;
+        this.locationId = locationId;
+        this.reportTypeID = reportTypeID;
         this.threatDegree = threatDegree;
         this.description = description;
     }
 
-    public ReportDTO(Date date, Location localisation, ReportType reportType,
+    public ReportDTO(Long locationId, Long reportTypeID,
                      int threatDegree, String description) {
-        this.date = date;
-        this.location = localisation;
-        this.reportType = reportType;
+        this.locationId = locationId;
+        this.reportTypeID = reportTypeID;
         this.threatDegree = threatDegree;
         this.description = description;
 
         this.rejections = 0;
         this.confirmations = 0;
     }
-
-    public Date getDate() {
-        return date;
+    public Long getReportTypeID() {
+        return reportTypeID;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setReportTypeID(Long reportTypeID) {
+        this.reportTypeID = reportTypeID;
+    }
+    public Long getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(Long locationId) {
+        this.locationId = locationId;
     }
 
     public int getRejections() {
@@ -64,14 +71,6 @@ public class ReportDTO {
         this.confirmations = confirmations;
     }
 
-    public ReportType getReportType() {
-        return reportType;
-    }
-
-    public void setReportType(ReportType reportType) {
-        this.reportType = reportType;
-    }
-
     public int getThreatDegree() {
         return threatDegree;
     }
@@ -85,8 +84,5 @@ public class ReportDTO {
     public void setDescription(String nameDescription) {
         this.description = nameDescription;
     }
-    public Report convertFromDTO() {
-        return new Report(this.date, this.rejections, this.confirmations,
-                this.location, this.reportType, this.threatDegree, this.description);
-    }
+
 }
