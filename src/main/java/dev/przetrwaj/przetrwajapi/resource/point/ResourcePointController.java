@@ -3,6 +3,7 @@ package dev.przetrwaj.przetrwajapi.resource.point;
 import dev.przetrwaj.przetrwajapi.resource.Resource;
 import dev.przetrwaj.przetrwajapi.resource.ResourceDTO;
 import dev.przetrwaj.przetrwajapi.resource.ResourceQuantityDTO;
+import dev.przetrwaj.przetrwajapi.resource.type.ResourceType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,6 +43,10 @@ public class ResourcePointController {
     @PostMapping("/changeResQuantity")
     public Resource changeResourceQuantity(@RequestBody ResourceQuantityDTO resourceQuantityDTO){
         return resourcePointsService.changeResourceQuantity(resourceQuantityDTO);
+    }
+    @GetMapping("/getResType")
+    public List<ResourceType> getAllResourceTypes(){
+        return resourcePointsService.getAllResourceTypes();
     }
 
 }

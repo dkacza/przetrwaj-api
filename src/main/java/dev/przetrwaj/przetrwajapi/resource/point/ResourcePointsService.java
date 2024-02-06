@@ -75,4 +75,7 @@ public class ResourcePointsService {
     private boolean locationIsInBounds(Location location, Double top, Double bottom, Double left, Double right){
         return (location.getLongitude() > left && location.getLongitude() < right & location.getLatitude() < top && location.getLatitude() > bottom);
     }
+    public List<ResourceType> getAllResourceTypes(){
+        return resourceTypeRepository.findAll();
+    }
 }
