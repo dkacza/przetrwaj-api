@@ -33,4 +33,10 @@ public class ReportController {
     public void removeReport(@RequestBody Long reportId){
         reportService.removeReport(reportId);
     }
+    @PostMapping("confirmReport")
+    public void confirmReport(@RequestBody Long reportId){
+        reportService.confirmReport(reportId);
+    }
+    @PostMapping("rejectReport")
+    public void rejectReport(@RequestBody Long reportId){ reportService.rejectReport(reportId); }
 }

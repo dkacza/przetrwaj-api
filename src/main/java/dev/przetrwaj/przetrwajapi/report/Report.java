@@ -134,5 +134,8 @@ public class Report {
         this.location = location;
     }
 
+    public void confirmReport() {confirmations += 1;}
+    public void rejectReport() {rejections += 1;}
+
 
 }

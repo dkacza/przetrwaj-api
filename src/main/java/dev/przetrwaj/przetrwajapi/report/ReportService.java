@@ -53,4 +53,16 @@ public class ReportService {
     public void removeReport(Long reportId){
         reportRepository.deleteById(reportId);
     }
+    public void confirmReport(Long reportId) {
+        reportRepository.findById(reportId).ifPresent(report -> {
+            report.confirmReport();
+            reportRepository.save(report);
+        });
+    }
+    public void rejectReport(Long reportId) {
+        reportRepository.findById(reportId).ifPresent(report -> {
+            report.rejectReport();
+            reportRepository.save(report);
+        });
+    }
 }
