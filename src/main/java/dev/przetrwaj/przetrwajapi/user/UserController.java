@@ -15,11 +15,11 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping
+    @GetMapping
     public ResponseEntity<List<UserDTO>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
     }
-    @PostMapping("/byId")
+    @GetMapping("/byId")
     public ResponseEntity<UserDTO> getUserById(@RequestParam long id) {
         return ResponseEntity.ok(userService.getUserById(id));
     }
