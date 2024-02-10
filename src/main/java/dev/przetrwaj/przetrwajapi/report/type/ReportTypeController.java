@@ -13,12 +13,12 @@ public class ReportTypeController {
         this.reportTypeService = reportTypeService;
     }
 
-    @GetMapping
+    @GetMapping("/getAllReportTypes")
     public List<ReportType> getAllReportTypes(){
         return reportTypeService.getAllReportTypes();
     }
-    @PostMapping
-    public ReportType addReportType(@RequestBody ReportTypeDTO reportTypeDTO){
-        return reportTypeService.addNewReportType(reportTypeDTO);
-    }
+//    @PostMapping("/addReportType")
+//    public ReportType addReportType(@RequestBody ReportTypeDTO reportTypeDTO){
+//        return reportTypeService.addNewReportType(reportTypeDTO);
+//    }
 }

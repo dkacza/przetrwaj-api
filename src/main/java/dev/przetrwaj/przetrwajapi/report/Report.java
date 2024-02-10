@@ -16,6 +16,8 @@ public class Report {
     @NotNull
     private Date date;
     @NotNull
+    private String name;
+    @NotNull
     private int rejections;
     @NotNull
     private int confirmations;
@@ -39,9 +41,10 @@ public class Report {
     public Report() {
     }
 
-    public Report(int rejections, int confirmations, Location localisation,
+    public Report(String name, int rejections, int confirmations, Location localisation,
                   ReportType reportType, int threatDegree, String description) {
         this.date = new Date();
+        this.name = name;
         this.rejections = rejections;
         this.confirmations = confirmations;
         this.location = localisation;
@@ -50,9 +53,10 @@ public class Report {
         this.description = description;
     }
 
-    public Report(Location localisation, ReportType reportType,
+    public Report(String name, Location localisation, ReportType reportType,
                   int threatDegree, String description) {
         this.date = new Date();
+        this.name = name;
         this.location = localisation;
         this.reportType = reportType;
         this.threatDegree = threatDegree;
@@ -68,6 +72,12 @@ public class Report {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getRejections() {

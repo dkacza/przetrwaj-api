@@ -2,7 +2,6 @@ package dev.przetrwaj.przetrwajapi.report;
 
 import dev.przetrwaj.przetrwajapi.location.Location;
 import dev.przetrwaj.przetrwajapi.report.type.ReportType;
-import dev.przetrwaj.przetrwajapi.report.type.ReportTypeDTO;
 import dev.przetrwaj.przetrwajapi.resource.point.CoordinatesDTO;
 import dev.przetrwaj.przetrwajapi.resource.point.ResourcePoint;
 import org.springframework.web.bind.annotation.*;
@@ -22,12 +21,16 @@ public class ReportController {
     public List<Report> getResourcePointsByLocation(@RequestBody CoordinatesDTO coordinatesDTO){
         return reportService.getReportsByLocation(coordinatesDTO);
     }
-    @GetMapping
+    @GetMapping("getAllReports")
     public List<Report> getAllReports(){
         return reportService.getAllReports();
     }
-    @PostMapping
+    @PostMapping("addReport")
     public Report addReport(@RequestBody ReportDTO reportDTO){
         return reportService.addNewReport(reportDTO);
+    }
+    @PostMapping("removeReport")
+    public void removeReport(@RequestBody Long reportId){
+        reportService.removeReport(reportId);
     }
 }

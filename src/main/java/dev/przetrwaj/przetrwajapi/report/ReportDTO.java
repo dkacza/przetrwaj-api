@@ -8,6 +8,7 @@ import java.util.Date;
 
 public class ReportDTO {
 
+    private String name;
     private int rejections;
     private int confirmations;
     private int threatDegree;
@@ -20,8 +21,9 @@ public class ReportDTO {
     }
 
 
-    public ReportDTO(int rejections, int confirmations, Long locationId,
+    public ReportDTO(String name, int rejections, int confirmations, Long locationId,
                      Long reportTypeID, int threatDegree, String description) {
+        this.name = name;
         this.rejections = rejections;
         this.confirmations = confirmations;
         this.locationId = locationId;
@@ -30,8 +32,9 @@ public class ReportDTO {
         this.description = description;
     }
 
-    public ReportDTO(Long locationId, Long reportTypeID,
+    public ReportDTO(String name, Long locationId, Long reportTypeID,
                      int threatDegree, String description) {
+        this.name = name;
         this.locationId = locationId;
         this.reportTypeID = reportTypeID;
         this.threatDegree = threatDegree;
@@ -50,7 +53,12 @@ public class ReportDTO {
     public Long getLocationId() {
         return locationId;
     }
-
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
     public void setLocationId(Long locationId) {
         this.locationId = locationId;
     }

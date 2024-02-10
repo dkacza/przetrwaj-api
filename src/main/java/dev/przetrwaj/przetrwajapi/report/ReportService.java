@@ -3,7 +3,6 @@ package dev.przetrwaj.przetrwajapi.report;
 import dev.przetrwaj.przetrwajapi.location.Location;
 import dev.przetrwaj.przetrwajapi.location.LocationRepository;
 import dev.przetrwaj.przetrwajapi.report.type.ReportType;
-import dev.przetrwaj.przetrwajapi.report.type.ReportTypeDTO;
 import dev.przetrwaj.przetrwajapi.report.type.ReportTypeRepository;
 import dev.przetrwaj.przetrwajapi.resource.point.CoordinatesDTO;
 import dev.przetrwaj.przetrwajapi.resource.point.ResourcePoint;
@@ -45,10 +44,13 @@ public class ReportService {
     public Report addNewReport(ReportDTO reportDTO) {
         Location location = locationRepository.findById(reportDTO.getLocationId()).orElse(null);
         ReportType reportType = reportTypeRepository.findById(reportDTO.getReportTypeID()).orElse(null);
-        return reportRepository.save(new Report(location, reportType,
+        return reportRepository.save(new Report(reportDTO.getName(), location, reportType,
                 reportDTO.getThreatDegree(), reportDTO.getDescription()));
     }
     private boolean locationIsInBounds(Location location, Double top, Double bottom, Double left, Double right){
         return (location.getLongitude() > left && location.getLongitude() < right & location.getLatitude() < top && location.getLatitude() > bottom);
+    }
+    public void removeReport(Long reportId){
+        reportRepository.deleteById(reportId);
     }
 }
