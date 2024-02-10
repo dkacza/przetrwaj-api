@@ -37,12 +37,12 @@ public class AuthenticationService {
                 Role.USER);
         userRepository.save(newUser);
         String token = jwtService.generateToken(newUser);
-        return new AuthenticationResponse(token);
+        return new AuthenticationResponse(newUser, token);
     }
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         User user = userRepository.findByEmail(request.getUsername()).orElseThrow(() -> new UsernameNotFoundException("Username not found"));
         String token = jwtService.generateToken(user);
-        return new AuthenticationResponse(token);
+        return new AuthenticationResponse(user, token);
     }
 }

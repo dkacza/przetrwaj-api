@@ -1,35 +1,37 @@
-package dev.przetrwaj.przetrwajapi.auth;
+package dev.przetrwaj.przetrwajapi.user;
 
-import dev.przetrwaj.przetrwajapi.user.Role;
-import dev.przetrwaj.przetrwajapi.user.User;
+import jakarta.persistence.*;
 
-public class AuthenticationResponse {
+import java.util.Optional;
+
+public class UserDTO {
     private Long id;
     private String firstName;
     private String lastName;
     private String email;
     private Role role;
-    private String token;
 
-    public String getToken() {
-        return token;
+    public UserDTO(Long id, String firstName, String lastName, String email, Role role) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.role = role;
     }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public AuthenticationResponse(String token) {
-        this.token = token;
-    }
-    public AuthenticationResponse(User user, String token) {
+    public UserDTO(User user) {
         this.id = user.getId();
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.email = user.getEmail();
         this.role = user.getRole();
-        this.token = token;
     }
+
+    public UserDTO(Optional<User> userById) {
+    }
+
+    public UserDTO() {
+    }
+
     public Long getId() {
         return id;
     }
@@ -69,6 +71,4 @@ public class AuthenticationResponse {
     public void setRole(Role role) {
         this.role = role;
     }
-
-
 }
