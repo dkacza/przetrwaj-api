@@ -14,7 +14,9 @@ public class Report {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
-    private Date date;
+    private Date dateCreation;
+    @NotNull
+    private Date dateExpiration;
     @NotNull
     private String name;
     @NotNull
@@ -43,7 +45,8 @@ public class Report {
 
     public Report(String name, int rejections, int confirmations, Location localisation,
                   ReportType reportType, int threatDegree, String description) {
-        this.date = new Date();
+        this.dateCreation = new Date();
+        this.dateExpiration = new Date(this.dateCreation.getTime() + (24 * 60 * 60 * 1000));
         this.name = name;
         this.rejections = rejections;
         this.confirmations = confirmations;
@@ -55,7 +58,8 @@ public class Report {
 
     public Report(String name, Location localisation, ReportType reportType,
                   int threatDegree, String description) {
-        this.date = new Date();
+        this.dateCreation = new Date();
+        this.dateExpiration = new Date(this.dateCreation.getTime() + (24 * 60 * 60 * 1000));
         this.name = name;
         this.location = localisation;
         this.reportType = reportType;
@@ -66,12 +70,17 @@ public class Report {
         this.confirmations = 0;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDateCreation() {
+        return dateCreation;
     }
-
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDateCreation(Date date) {
+        this.dateCreation = date;
+    }
+    public Date getDateExpiration() {
+        return dateExpiration;
+    }
+    public void setDateExpiration(Date date) {
+        this.dateExpiration = date;
     }
     public String getName() {
         return name;
