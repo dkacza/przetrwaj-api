@@ -27,6 +27,7 @@ public class UserService {
             if (newUserDetails.getFirstName() != null && !newUserDetails.getFirstName().equals("")) user.setFirstName(newUserDetails.getFirstName());
             if (newUserDetails.getLastName() != null && !newUserDetails.getLastName().equals("")) user.setLastName(newUserDetails.getLastName());
         }
+        userRepository.save(user);
         return new UserDTO(user);
     }
 
