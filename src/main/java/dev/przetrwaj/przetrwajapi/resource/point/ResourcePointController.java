@@ -20,7 +20,7 @@ public class ResourcePointController {
     public List<ResourcePoint> getAllResourcePoints(){
         return resourcePointsService.getAllResourcePoints();
     }
-    @GetMapping("/getResByLoc")
+    @PostMapping("/getResByLoc")
     public List<ResourcePoint> getResourcePointsByLocation(@RequestBody CoordinatesDTO coordinatesDTO){
         return resourcePointsService.getResourcePointsByLocation(coordinatesDTO);
     }

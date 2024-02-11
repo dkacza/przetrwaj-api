@@ -13,8 +13,8 @@ public class LocationController {
         this.locationService = locationService;
     }
 
-    @PostMapping("/getAll")
-    public List<Location> gatAllLocations(){
+    @GetMapping("")
+    public List<Location> getAllLocations(){
         return locationService.getAllLocations();
     }
     @PostMapping

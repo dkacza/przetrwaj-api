@@ -17,7 +17,7 @@ public class ReportController {
     public ReportController(ReportService reportService) {
         this.reportService = reportService;
     }
-    @GetMapping("/getRepsByLoc")
+    @PostMapping("/getRepsByLoc")
     public List<Report> getResourcePointsByLocation(@RequestBody CoordinatesDTO coordinatesDTO){
         return reportService.getReportsByLocation(coordinatesDTO);
     }

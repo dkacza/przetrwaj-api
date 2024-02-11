@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public class LocationService {
     private final LocationRepository locationRepository;
-    private final Double MINIMAL_DISTANCE = 1d;  //TODO: determine it
+    private final Double MINIMAL_DISTANCE = 0.0001d;  //TODO: determine it
 
     public LocationService(LocationRepository locationRepository) {
         this.locationRepository = locationRepository;

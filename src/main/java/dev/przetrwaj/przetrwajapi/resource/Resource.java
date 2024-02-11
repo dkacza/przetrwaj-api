@@ -14,9 +14,7 @@ public class Resource {
     private Double quantity;
     @NotNull
     @ManyToOne
-    @JoinColumn(
-            unique = true
-    )
+    @JoinColumn(name="resourceTypeId", nullable=false)
     private ResourceType resourceType;
     @NotNull
     @ManyToOne

@@ -18,7 +18,7 @@ public class ResourcePoint {
     @NotNull
     private String name;
     @NotNull
-    @OneToMany(mappedBy="resourcePoint")
+    @OneToMany(mappedBy="resourcePoint", cascade = CascadeType.ALL)
     private Set<Resource> resources;
     @NotNull
     @OneToOne
