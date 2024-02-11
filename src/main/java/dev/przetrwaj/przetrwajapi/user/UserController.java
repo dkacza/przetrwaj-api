@@ -23,6 +23,16 @@ public class UserController {
     public ResponseEntity<UserDTO> getUserById(@RequestParam long id) {
         return ResponseEntity.ok(userService.getUserById(id));
     }
+    @PatchMapping("/byId")
+    public ResponseEntity<UserDTO> updateUser(@RequestBody UserDTO userDTO, @RequestParam long id) {
+        return ResponseEntity.ok(userService.updateUserById(id, userDTO));
+    }
+
+    @DeleteMapping("/byId")
+    public ResponseEntity<String> updateUser(@RequestParam long id) {
+        boolean deleted = userService.deleteUserById(id);
+        return deleted ? ResponseEntity.ok("User deleted") : ResponseEntity.ok("User not found");
+    }
 
 
 }

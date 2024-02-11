@@ -20,4 +20,21 @@ public class UserService {
     List<UserDTO> getAllUsers() {
         return userRepository.findAll().stream().map(UserDTO::new).toList();
     }
+    UserDTO updateUserById(long id, UserDTO newUserDetails) {
+        User user = userRepository.findById(id).orElse(null);
+        if (user == null) return null;
+        else {
+            if (newUserDetails.getFirstName() != null && !newUserDetails.getFirstName().equals("")) user.setFirstName(newUserDetails.getFirstName());
+            if (newUserDetails.getLastName() != null && !newUserDetails.getLastName().equals("")) user.setLastName(newUserDetails.getLastName());
+        }
+        return new UserDTO(user);
+    }
+
+    public boolean deleteUserById(long id) {
+        if (userRepository.findById(id).isPresent()) {
+            userRepository.deleteById(id);
+            return true;
+        };
+        return false;
+    }
 }
