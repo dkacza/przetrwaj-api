@@ -29,6 +29,7 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponse register(RegisterRequest request) {
+        if(userRepository.findByEmail(request.getEmail()).isPresent()) throw new RuntimeException("Email already in use");
         User newUser = new User(
                 request.getFirstName(),
                 request.getLastName(),
